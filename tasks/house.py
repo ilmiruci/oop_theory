@@ -1,40 +1,40 @@
 class Human:
-    default_name = "Unknown"
-    default_age = 0
+    default_name: str = "Unknown"
+    default_age: int = 0
 
-    def __init__(self, name: str = default_name, age=default_age) -> None:
-        self.name = name
-        self.age = age
-        self.__money = 0
+    def __init__(self, name: str = default_name, age: int = default_age) -> None:
+        self.name: str = name
+        self.age: int = age
+        self.__money: int = 0
         self.__house = None
 
-    def info(self):
+    def info(self) -> None:
         print(f"Имя: {self.name}\n"
               f"Возраст: {self.age}\n"
               f"Деньги: {self.__money}\n"
               f"Дом: {self.__house} ")
 
     @staticmethod
-    def default_info():
+    def default_info() -> None:
         print(f"{Human.default_name}\n"
               f"{Human.default_age}")
 
-    def __make_deal(self, house: 'House', price: float | int):
+    def __make_deal(self, house: 'House', price: float | int) -> None:
         self.__money -= price
         self.__house = house
         print("Вы купили дом")
 
-    def _validate_money(self, value):
+    def _validate_money(self, value: int | float) -> None:
         if not isinstance(value, (int, float)):
             raise ValueError("Укажите числовое значение")
 
-    def earn_money(self, money):
+    def earn_money(self, money: int | float):
         self._validate_money(money)
 
         self.__money += money
 
-    def buy_house(self, house, discount):
-        price = house.final_price(discount)
+    def buy_house(self, house: "House", discount: int):
+        price: int = house.final_price(discount)
         if self.__money > price:
             self.__make_deal(house, price)
         else:
@@ -46,7 +46,7 @@ class House:
         self._area = area
         self._price = price
 
-    def final_price(self, discount):
+    def final_price(self, discount: int) -> float:
         return self._price - (self._price * discount // 100)
 
 
