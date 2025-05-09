@@ -26,8 +26,11 @@ class EngAlphabet(Alphabet):
         return self.__letters_num
 
     @staticmethod
-    def example(self):
-        pass
+    def example():
+        return ("Alice was beginning to get very tired of sitting by her sister on \n"
+                "the bank, and of having nothing to do: once or twice she had peeped \n"
+                "into the book her sister was reading, but it had no pictures or conversations \n"
+                "in it, \"and what is the use of a book,\" thought Alice \"without pictures or conversation?")
 
 
 
@@ -37,4 +40,4 @@ if __name__ == "__main__":
     print(en.letters_num())
     en.is_in_letter("F")
     en.is_in_letter("Щ")
-    print(en.__dict__)
+    print(en.example())
